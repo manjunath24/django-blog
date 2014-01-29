@@ -1,0 +1,33 @@
+{% include 'header.html' %}
+{% load staticfiles %}
+<div style="margin-left:500px;">
+{% for i in data %}
+
+		<div style="float: left;"><img src="{% static i.blog_file %}" width="70px" height="70px"/></div>
+		<div style="color:blue;font-size:18px;">
+			
+			<a href="{% url 'details' i.id %}">{{i.title|capfirst|linebreaks}}</a>
+	      		<span style="color:#000;font-size:12px;">{{'By '|add:i.created_by|capfirst}}
+			</span>
+		</div>
+		
+		<div>{{i.body|truncatewords:'4'}}</div>
+
+		<div  style="font-size:12px;">Published on {{i.pub_date}}</div>
+
+		<div style="font-size:12px;">
+		Tags:
+		{% for tag in i.tags.all %}
+
+		{{tag}}
+		{% if not forloop.last %},{% endif %}
+
+		{% endfor %}
+		</div>
+	{% empty %}
+	<h4>There are no blogs for now.Please visit after some time.</h4>
+	<br>
+{% endfor %}
+</div>
+
+{% include 'footer.html' %}
