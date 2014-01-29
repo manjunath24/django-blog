@@ -13,7 +13,10 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> aa7865c040a4e75aa975090edd1ffdede996c183
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
@@ -81,7 +84,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+<<<<<<< HEAD
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/')
+=======
+MEDIA_ROOT = '/home/agiliq/agiliq/static/'
+>>>>>>> aa7865c040a4e75aa975090edd1ffdede996c183
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
@@ -90,6 +97,7 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, "static"),
+<<<<<<< HEAD
 )
 
 import dj_database_url
@@ -97,3 +105,6 @@ DATABASES['default'] =  dj_database_url.config()
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+=======
+)
+>>>>>>> aa7865c040a4e75aa975090edd1ffdede996c183
