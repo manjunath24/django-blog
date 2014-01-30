@@ -21,6 +21,19 @@ border-radius: 10px;
 margin-left:0px;
 }
 
+.footer {
+  position: relative;
+  margin-top: -150px; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  padding-top:20px;
+  background-color:#c2c2c2
+} 
+
+html,body{
+    height: 100%
+}
+
 </style>
 </head>
 
@@ -31,9 +44,8 @@ margin-left:0px;
 		      <div class="navbar-inner">
 		        <div class="container">
 		          <ul class="nav">
-		            <li class="active"><a href="/">Home</a></li>
-		            <li><a href="#">About</a></li>
-		            <li><a href="#">Contact</a></li>
+		            <li {% if home %}class="active"{%endif%}><a href="{% url 'home' %}">Home</a></li>
+		            <li {% if about %}class="active"{%endif%}><a href="{% url 'about' %}"">About</a></li>
 		          </ul>
 		        </div>
 		      </div>

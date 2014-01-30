@@ -11,4 +11,5 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'agiliq_app.views.home', name='home'),
     url(r'^detail/(?P<blog_id>[^/]+)', 'agiliq_app.views.detail', name='details'),
+    url(r'^about', 'agiliq_app.views.about', name='about'),
 )

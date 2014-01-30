@@ -2,51 +2,60 @@
 {% load staticfiles %}
 
 {% for i in data %}
-		<hr>		
-		<div class="main" >
-			<img src="{% static i.blog_file %}" class="placeholder"/>
-		</div>
+<hr>		
+<div class="main" >
+	<img src="{% static i.blog_file %}" class="placeholder"/>
+</div>
+<br/>
+<p style="color:blue;font-size:18px;"><a href="{% url 'details' i.id %}">{{i.title|capfirst}}</a>
+        <span style="color:#000;font-size:12px;font-weight:bold">-- {{i.created_by|capfirst}}
+	</span>
+</p>
 
-		<p style="color:blue;font-size:18px;"><a href="{% url 'details' i.id %}">{{i.title|capfirst}}</a>
-	      	        <span style="color:#000;font-size:12px;font-weight:bold">-- {{i.created_by|capfirst}}
-			</span>
-		</p>
-		
-		<p>{{i.body}}</p>
+<p>{{i.body}}</p>
 
-		<p>Published on {{i.pub_date}}</p>
+<p>Published on {{i.pub_date}}</p>
 
-		<p style="font-size:12px;">
-		Tags:
-		{% for tag in i.tags.all %}
-		
-		{{tag}}
-		{% if not forloop.last %},{% endif %}
+<p style="font-size:12px;">
+Tags:
+{% for tag in i.tags.all %}
 
-		{% endfor %}
-		</p>
+{{tag}}
+{% if not forloop.last %},{% endif %}
+
+{% endfor %}
+</p>
 
 {% endfor %}
 <hr>
 <p>Readers Comments:</p>
 
 {% for comment in comments %}
+	
 	<p style="color:#A52A2A">{{comment.dessription|capfirst}}</p>
-<br/>
-	by <span style="color:#2E8B57">{{comment.name|capfirst}}</span>
-<br/>
+
+	-- <p style="color:#2E8B57">{{comment.name|capfirst}}</p>
+	
 {% empty %}
 	<p style="color:#A52A2A">Be the first to comment.</p>
 {% endfor %}
 
+{% if added %}
+<h4>Your comment is awaiting moderation.Thank you for your view.</h4>
+{% endif %}
 
-<div class="sidebar">
-<table>
-	<form action="{% for i in data %}/detail/{{i.id}}{% endfor %}" method="post">{% csrf_token %}
-		{{form.as_table}}
-	<tr><td><input type="submit" value="Post Comment"/></td></tr>
+<br/>
+<h5>Use the form below to post your comment. </h5>
+
+
+
+	<form action="{% for i in data %}{% url 'details' i.id %}{% endfor %}" method="post">{% csrf_token %}
+		{{form.as_p}}
+		
+			<p><input type="submit" value="Post Comment"/></p>
+		
 	</form>
-</table>
-</div>
+
+
 
 {% include 'footer.html' %}
