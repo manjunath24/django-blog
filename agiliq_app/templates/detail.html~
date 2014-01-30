@@ -1,24 +1,22 @@
 {% include 'header.html' %}
+{% load staticfiles %}
 
-<div>
 {% for i in data %}
-
-		<div style="color:blue;font-size:18px;"><a href="{% url 'details' i.id %}">{{i.title|capfirst}}</a>
-	      		by <span style="color:#000;font-size:12px;font-weight:bold">{{i.created_by|capfirst}}
-			</span>
+				
+		<div class="main" >
+			<img src="{% static i.blog_file %}" width="70px" height="70px"/>
 		</div>
+
+		<p style="color:blue;font-size:18px;"><a href="{% url 'details' i.id %}">{{i.title|capfirst}}</a>
+	      	        <span style="color:#000;font-size:12px;font-weight:bold">-- {{i.created_by|capfirst}}
+			</span>
+		</p>
 		
-		<br/>
+		<p>{{i.body}}</p>
 
-		<div>{{i.body}}</div>
+		<p>Published on {{i.pub_date}}</p>
 
-		<br/>
-
-		<div  style="font-size:12px;">Published on {{i.pub_date}}</div>
-
-		<br/>
-
-		<div style="font-size:12px;">
+		<p style="font-size:12px;">
 		Tags:
 		{% for tag in i.tags.all %}
 		
@@ -26,32 +24,23 @@
 		{% if not forloop.last %},{% endif %}
 
 		{% endfor %}
-		</div>
+		</p>
 
-	<br>
 {% endfor %}
-<div>
+
 <p>Readers Comments:</p>
 
 {% for comment in comments %}
-	<span style="color:#A52A2A">{{comment.dessription|capfirst}}</span>
+	<p style="color:#A52A2A">{{comment.dessription|capfirst}}</p>
 <br/>
 	by <span style="color:#2E8B57">{{comment.name|capfirst}}</span>
 <br/>
 {% empty %}
-	<span style="color:#A52A2A">Be the first to comment.</span>
+	<p style="color:#A52A2A">Be the first to comment.</p>
 {% endfor %}
 
-</div>
-</div>
-<hr>
-<h5>Please share your views using the form below</h5>
 
-{% if added %}
-<h4>Your comment is awaiting moderation.Thanks for sharing your views.</h4>
-{% endif %}
-
-<div>
+<div class="sidebar">
 <table>
 	<form action="{% for i in data %}/detail/{{i.id}}{% endfor %}" method="post">{% csrf_token %}
 		{{form.as_table}}
