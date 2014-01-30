@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% for i in data %}
-				
+		<hr>		
 		<div class="main" >
 			<img src="{% static i.blog_file %}" class="placeholder"/>
 		</div>
@@ -27,7 +27,7 @@
 		</p>
 
 {% endfor %}
-
+<hr>
 <p>Readers Comments:</p>
 
 {% for comment in comments %}

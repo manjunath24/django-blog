@@ -4,7 +4,7 @@
 {% for i in data %}
 				
 		<div class="main" >
-			<img src="{% static i.blog_file %}" width="70px" height="70px"/>
+			<img src="{% static i.blog_file %}" class="placeholder"/>
 		</div>
 
 		<p style="color:blue;font-size:18px;"><a href="{% url 'details' i.id %}">{{i.title|capfirst}}</a>
@@ -27,7 +27,7 @@
 		</p>
 
 {% endfor %}
-
+<hr>
 <p>Readers Comments:</p>
 
 {% for comment in comments %}
