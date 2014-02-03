@@ -16,7 +16,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'nx!b(k#7jlt^*q4lccyrqa9bx(t^cxg%-rt65o5eq@a_elsx_f'
+SECRET_KEY = os.environ.get("MYAPP_SECRET_KEY",'')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -60,8 +60,8 @@ DATABASES = {
     'default': {
         'ENGINE'	: 'django.db.backends.mysql',
         'NAME'		: 'blog',
-	'USER'		: 'root',
-	'PASSWORD'	: 'agiliq',
+	'USER'		: os.environ.get("MYAPP_DB_USER", ''),
+	'PASSWORD'	: os.environ.get("MYAPP_DB_PASSWORD", ''),
 	'HOST'		: ''
     }
 }
