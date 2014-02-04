@@ -9,6 +9,7 @@ def detail(request,blog_id=None):
     """
     data = Article.objects.get(pk=blog_id)
     get_comments = Comment.objects.filter(blogid=blog_id, status=1)
+
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():

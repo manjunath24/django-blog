@@ -37,6 +37,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'agiliq_app',
     'taggit',
+    'south'
 )
 
 MIDDLEWARE_CLASSES = (

@@ -20,11 +20,13 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
+
 class Comment(models.Model):
     blogid = models.ForeignKey(Article)
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
     dessription = models.TextField()
-    status = models.CharField(max_length=1,choices=STATUS,default=0)
+    status = models.CharField(max_length=1, choices=STATUS, default=0)
+
     def __unicode__(self):
         return self.name
