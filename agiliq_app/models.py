@@ -5,14 +5,14 @@ from taggit.managers import TaggableManager
 
 STATUS = (
     ('1', 'Active'),
-    ('0', 'Inactive'),
-    
+    ('0', 'Inactive'), 
 )
+
 
 class Article(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
-    blog_file = models.FileField(upload_to='images', blank = True)
+    blog_file = models.FileField(upload_to='images', blank=True)
     created_by = models.CharField(max_length=100)
     pub_date = models.DateTimeField('date published')
     tags = TaggableManager()
