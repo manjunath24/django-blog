@@ -37,8 +37,11 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'agiliq_app',
     'taggit',
-    'south'
+    'south',
+    'django_nose',
 )
+
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
