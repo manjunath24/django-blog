@@ -5,7 +5,7 @@ from taggit.managers import TaggableManager
 
 STATUS = (
     ('1', 'Active'),
-    ('0', 'Inactive'), 
+    ('0', 'Inactive'),
 )
 
 
