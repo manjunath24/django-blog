@@ -11,6 +11,9 @@ install:
 
 env:
     MYAPP_SECRET_KEY=travis
+    
+before_script:
+  - mysql -e 'create database blog;'    
 
 # command to run tests
 script: python manage.py test
