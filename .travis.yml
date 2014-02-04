@@ -13,4 +13,4 @@ env:
     MYAPP_SECRET_KEY=travis
 
 # command to run tests
-script: nosetests
+script: python manage.py test
