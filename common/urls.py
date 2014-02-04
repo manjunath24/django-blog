@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from agiliq_app import views
+from common import views
 
 urlpatterns = patterns('',
     url(r'^$', views.home,name='home'),
