@@ -9,7 +9,7 @@ def detail(request, blog_id=None):
     """ Displays detail page with comments
     """
     data = Article.objects.get(pk=blog_id)
-    get_comments = Comment.objects.filter(blogid=blog_id, status=1)
+    get_comments = Comment.objects.filter(blog=blog_id, status=1)
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -17,7 +17,7 @@ def detail(request, blog_id=None):
             name = request.POST['name']
             email = request.POST['email']
             description = request.POST['description']
-            comment = Comment(blogid=data, name=name, email=email,
+            comment = Comment(blog=data, name=name, email=email,
                               dessription=description, status=0)
             comment.save()
             form = CommentForm()
