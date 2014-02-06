@@ -4,21 +4,21 @@
 
 <hr>		
 <div class="main" >
-	<img src="{% static data.blog_file %}" class="placeholder"/>
+	<img src="{% static articles.blog_file %}" class="placeholder"/>
 </div>
 <br/>
-<p style="color:blue;font-size:18px;"><a href="{% url 'details' data.id %}">{{data.title|capfirst}}</a>
-        <span style="color:#000;font-size:12px;font-weight:bold">-- {{data.created_by|capfirst}}
+<p style="color:blue;font-size:18px;"><a href="{% url 'details' articles.id %}">{{articles.title|capfirst}}</a>
+        <span style="color:#000;font-size:12px;font-weight:bold">-- {{articles.created_by|capfirst}}
 	</span>
 </p>
 
-<p>{{data.body}}</p>
+<p>{{articles.body}}</p>
 
-<p>Published on {{data.pub_date}}</p>
+<p>Published on {{articles.pub_date}}</p>
 
 <p style="font-size:12px;">
 Tags:
-{% for tag in data.tags.all %}
+{% for tag in articles.tags.all %}
 
 {{tag}}
 {% if not forloop.last %},{% endif %}
@@ -49,7 +49,7 @@ Tags:
 
 
 
-	<form action="{% url 'details' data.id %}" method="post">{% csrf_token %}
+	<form action="{% url 'details' articles.id %}" method="post">{% csrf_token %}
 		{{form.as_p}}
 		
 			<p><input type="submit" value="Post Comment"/></p>
