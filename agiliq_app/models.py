@@ -28,7 +28,7 @@ class Comment(models.Model):
     blog = models.ForeignKey(Article)
     name = models.CharField(max_length=100)
     email = models.CharField(max_length=100)
-    dessription = models.TextField()
+    description = models.TextField()
     status = models.CharField(max_length=1, choices=STATUS, default=0)
 
     def __unicode__(self):

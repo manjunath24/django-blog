@@ -32,7 +32,7 @@ Tags:
 
 {% for comment in comments %}
 	
-	<p style="color:#A52A2A">{{comment.dessription|capfirst}}</p>
+	<p style="color:#A52A2A">{{comment.description|capfirst|safe}}</p>
 
 	-- <p style="color:#2E8B57">{{comment.name|capfirst}}</p>
 	

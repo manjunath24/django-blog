@@ -2,6 +2,8 @@ from django.shortcuts import render
 
 from .models import Article, Comment
 from .forms import CommentForm
+
+import markdown
 # Create your views here.
 
 
