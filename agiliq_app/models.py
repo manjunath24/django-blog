@@ -1,7 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 from taggit.managers import TaggableManager
+
 
 # Create your models here.
 
@@ -18,10 +20,17 @@ class Article(models.Model):
     blog_file = models.FileField(upload_to='images', blank=True)
     created_by = models.ForeignKey(User)
     pub_date = models.DateTimeField('date published')
+    slug = models.SlugField(max_length=255, null=True)
     tags = TaggableManager()
 
     def __unicode__(self):
         return self.title
+
+    def save(self, *args, **kwargs):
+        super(Article, self).save(*args, **kwargs)
+        self.slug = slugify('%s,%s' % (self.title,self.id))
+        super(Article, self).save(*args, **kwargs)
+ 
 
 
 class Comment(models.Model):

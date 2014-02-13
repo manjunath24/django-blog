@@ -1,59 +1,73 @@
 {% load staticfiles %}
+
 <!DOCTYPE html>
 <meta charset="utf-8">
 <html>
 
-<head>
-<title>Agiliq Blog</title>
-<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  type="text/css" />
-<style>
-.placeholder{
+	<head>
+		<title>Agiliq Blog</title>
+		<link rel="stylesheet" href="{% static 'css/bootstrap.css' %}"  type="text/css" />
+		<style>
+		.placeholder{
 
-width: 100px;
-height: 100px;
--webkit-border-radius: 10px;
--moz-border-radius: 10px;
-border-radius: 10px;
+		width: 100px;
+		height: 100px;
+		-webkit-border-radius: 10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
 
-}
+		}
 
-.thumbnails{
-margin-left:0px;
-}
+		.thumbnails{
+		margin-left:0px;
+		}
 
-.footer {
-  position: relative;
-  margin-top: -150px; /* negative value of footer height */
-  height: 150px;
-  clear:both;
-  padding-top:20px;
-  background-color:#c2c2c2
-} 
+		.footer {
+		  position: relative;
+		  margin-top: -150px; /* negative value of footer height */
+		  height: 150px;
+		  clear:both;
+		  padding-top:20px;
+		  background-color:#c2c2c2
+		} 
 
-html,body{
-    height: 100%
-}
+		html,body{
+		    height: 100%
+		}
 
-</style>
-</head>
+		</style>
+	</head>
 
-<body>
+	<body>
 
-<a href="https://github.com/manjunath24" target="__blank">
-		<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/		forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
-</a>
+		<a href="https://github.com/manjunath24" target="__blank">
+				<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/		forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+		</a>
 
-<div class="container">
-	<h1><a href="/">Agiliq Blog</a></h1>
-	<div class="navbar">
-		      <div class="navbar-inner">
-		        <div class="container">
-		          <ul class="nav">
-		            <li {% if home %}class="active"{%endif%}><a href="{% url 'home' %}">Home</a></li>
-		            <li {% if about %}class="active"{%endif%}><a href="{% url 'about' %}"">About</a></li>
-		          </ul>
-		        </div>
-		      </div>
-	</div>
+		<div class="container">
+			<h1><a href="/">Agiliq Blog</a></h1>
+			<div class="navbar">
+				      <div class="navbar-inner">
+					<div class="container">
+					  <ul class="nav">
+					    <li {% if home %}class="active"{%endif%}><a href="{% url 'home' %}">Home</a></li>
+					    <li {% if about %}class="active"{%endif%}><a href="{% url 'about' %}"">About</a></li>
+					  </ul>
+					</div>
+				      </div>
+			</div>
+
+		{% block content %}
+		{% endblock %}
+
+
+		</div>
+
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="{% static 'js/bootstrap.js' %}"></script>
+
+
+	</body>
+</html>
 
 

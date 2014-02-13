@@ -1,24 +1,24 @@
-{% include 'header.html' %}
+{% extends 'header.html' %}
 {% load staticfiles %}
 
-
+{% block content %}
 <hr>		
 <div class="main" >
-	<img src="{% static articles.blog_file %}" class="placeholder"/>
+	<img src="{% static article.blog_file %}" class="placeholder"/>
 </div>
 <br/>
-<p style="color:blue;font-size:18px;"><a href="{% url 'details' articles.id %}">{{articles.title|capfirst}}</a>
-        <span style="color:#000;font-size:12px;font-weight:bold">-- {{articles.created_by|capfirst}}
+<p style="color:blue;font-size:18px;"><a href="{% url 'details' article.id %}">{{article.title|capfirst}}</a>
+        <span style="color:#000;font-size:12px;font-weight:bold">-- {{article.created_by|capfirst}}
 	</span>
 </p>
 
-<p>{{articles.body}}</p>
+<p>{{article.body}}</p>
 
-<p>Published on {{articles.pub_date}}</p>
+<p>Published on {{article.pub_date}}</p>
 
 <p style="font-size:12px;">
 Tags:
-{% for tag in articles.tags.all %}
+{% for tag in article.tags.all %}
 
 {{tag}}
 {% if not forloop.last %},{% endif %}
@@ -49,7 +49,7 @@ Tags:
 
 
 
-	<form action="{% url 'details' articles.id %}" method="post">{% csrf_token %}
+	<form action="{% url 'details' article.id %}" method="post">{% csrf_token %}
 		{{form.as_p}}
 		
 			<p><input type="submit" value="Post Comment"/></p>
@@ -58,4 +58,4 @@ Tags:
 
 
 
-{% include 'footer.html' %}
+{% endblock %}
