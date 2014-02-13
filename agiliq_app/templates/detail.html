@@ -1,4 +1,4 @@
-{% extends 'header.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 {% block content %}
@@ -12,9 +12,12 @@
 	</span>
 </p>
 
-<p>{{article.body}}</p>
+<p>{{article.body|safe}}</p>
 
-<p>Published on {{article.pub_date}}</p>
+
+<hr>
+
+<p style="font-style:italic;">Published on {{article.pub_date}}</p>
 
 <p style="font-size:12px;">
 Tags:
@@ -26,9 +29,8 @@ Tags:
 {% endfor %}
 </p>
 
-
-<hr>
-<p>Readers Comments:</p>
+<br/>
+<p style="font-style:italic;">Readers Comments:</p>
 
 {% for comment in comments %}
 	

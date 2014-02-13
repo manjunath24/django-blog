@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 
 from taggit.managers import TaggableManager
 
-
+import markdown, time
 # Create your models here.
 
 
@@ -17,6 +17,7 @@ STATUS = (
 class Article(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
+    body_markdown = models.TextField()
     blog_file = models.FileField(upload_to='images', blank=True)
     created_by = models.ForeignKey(User)
     pub_date = models.DateTimeField('date published')
@@ -27,8 +28,8 @@ class Article(models.Model):
         return self.title
 
     def save(self, *args, **kwargs):
-        super(Article, self).save(*args, **kwargs)
-        self.slug = slugify('%s,%s' % (self.title,self.id))
+        self.body = markdown.markdown(self.body_markdown)
+        self.slug = '%s-%i' % (slugify(self.title),time.time())
         super(Article, self).save(*args, **kwargs)
  
 

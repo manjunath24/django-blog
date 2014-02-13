@@ -1,4 +1,4 @@
-{% extends 'header.html' %}
+{% extends 'base.html' %}
 {% load staticfiles %}
 
 	{% block content %}
@@ -11,7 +11,7 @@
 		        <img src="{% static i.blog_file %}" alt="{{i.title}} image" class="placeholder">
 		        <div class="caption">
 		          <h3>{{i.title|capfirst}}</h3>
-		          <p>{{i.body|truncatewords:'4'}}</p>
+		          <p>{{i.body|truncatewords:'4'|safe}}</p>
 			  <p>{{'By '|add:i.created_by|capfirst}} Published on {{i.pub_date}} </p>
 		          <p align="center"><a href="{% url 'details' i.slug %}" class="btn btn-primary">View More</a></p>
 		        </div>
