@@ -21,7 +21,7 @@ class Article(models.Model):
     blog_file = models.FileField(upload_to='images', blank=True)
     created_by = models.ForeignKey(User)
     pub_date = models.DateTimeField('date published')
-    slug = models.SlugField(max_length=255, null=True)
+    slug = models.SlugField(max_length=255)
     tags = TaggableManager()
 
     def __unicode__(self):
@@ -31,7 +31,6 @@ class Article(models.Model):
         self.body = markdown.markdown(self.body_markdown)
         self.slug = slugify(self.title)
         super(Article, self).save(*args, **kwargs)
- 
 
 
 class Comment(models.Model):

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from agiliq_app.models import Article, Comment
 
+
 class AuthorAdmin(admin.ModelAdmin):
     exclude = ('body', 'slug',)
 
