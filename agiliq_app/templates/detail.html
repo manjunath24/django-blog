@@ -50,14 +50,11 @@ Tags:
 <h5>Use the form below to post your comment. </h5>
 
 
-
 	<form action="{% url 'details' article.id %}" method="post">{% csrf_token %}
 		{{form.as_p}}
 		
 			<p><input type="submit" value="Post Comment"/></p>
 		
 	</form>
-
-
 
 {% endblock %}

@@ -5,15 +5,15 @@
 
 	<div class="row">
 		<ul class="thumbnails">
-		{% for i in articles %}
+		{% for article in articles %}
 		    <li class="span4">
 		      <div class="thumbnail">
-		        <img src="{% static i.blog_file %}" alt="{{i.title}} image" class="placeholder">
+		        <img src="{% static article.blog_file %}" alt="{{article.title}} image" class="placeholder">
 		        <div class="caption">
-		          <h3>{{i.title|capfirst}}</h3>
-		          <p>{{i.body|truncatewords:'4'|safe}}</p>
-			  <p>{{'By '|add:i.created_by|capfirst}} Published on {{i.pub_date}} </p>
-		          <p align="center"><a href="{% url 'details' i.slug %}" class="btn btn-primary">View More</a></p>
+		          <h3>{{article.title|capfirst}}</h3>
+		          <p>{{article.body|truncatewords:'4'|safe}}</p>
+			  <p>{{'By '|add:article.created_by|capfirst}} Published on {{article.pub_date}} </p>
+		          <p align="center"><a href="{% url 'details' article.slug %}" class="btn btn-primary">View More</a></p>
 		        </div>
 		      </div>
 		    </li>
