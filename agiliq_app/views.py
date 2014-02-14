@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from .models import Article, Comment
 from .forms import CommentForm
@@ -10,7 +10,7 @@ def detail(request, slug=None):
 
     """ Displays detail page with comments
     """
-    article = Article.objects.get(slug=slug)
+    article = get_object_or_404(Article, slug=slug)
     comments = Comment.objects.filter(blog=article.id, status=1)
 
     if request.method == 'POST':

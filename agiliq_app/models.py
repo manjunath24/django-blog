@@ -4,7 +4,7 @@ from django.template.defaultfilters import slugify
 
 from taggit.managers import TaggableManager
 
-import markdown, time
+import markdown
 # Create your models here.
 
 
@@ -29,7 +29,7 @@ class Article(models.Model):
 
     def save(self, *args, **kwargs):
         self.body = markdown.markdown(self.body_markdown)
-        self.slug = '%s-%i' % (slugify(self.title),time.time())
+        self.slug = slugify(self.title)
         super(Article, self).save(*args, **kwargs)
  
 
